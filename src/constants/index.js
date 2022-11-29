@@ -1,7 +1,7 @@
 export const MARCAS = [
-  { id: 1, nombre: "Europeo" },
-  { id: 2, nombre: "Americano" },
-  { id: 3, nombre: "Asiático" },
+  { id: 1, nombre: "European" },
+  { id: 2, nombre: "American" },
+  { id: 3, nombre: "Asian" },
 ];
 
 const YEARMAX = new Date().getFullYear();
@@ -11,6 +11,6 @@ export const YEARS = Array.from(
 );
 
 export const PLANES = [
-  { id: 1, nombre: "Básico" },
-  { id: 2, nombre: "Completo" },
+  { id: 1, nombre: "Basic" },
+  { id: 2, nombre: "Full Cover" },
 ];

@@ -36,7 +36,7 @@ const CotizadorProvider = ({ children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.values(datos).includes("")) {
-      setError("Todos los campos son obligatorios");
+      setError("All field are required!");
       setTimeout(() => {
         setError("");
       }, 2500);

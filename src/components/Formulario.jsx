@@ -12,7 +12,7 @@ const Formulario = () => {
       <form onSubmit={handleSubmit}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
-            Marca
+            Car Brand
           </label>
           <select
             name="marca"
@@ -20,7 +20,7 @@ const Formulario = () => {
             onChange={(e) => handleChangeDatos(e)}
             value={datos.marca}
           >
-            <option value="">-- Selecione Marca --</option>
+            <option value="">-- Select the brand --</option>
 
             {MARCAS.map((marca) => (
               <option key={marca.id} value={marca.id}>
@@ -32,7 +32,7 @@ const Formulario = () => {
 
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
-            Año
+            Year
           </label>
           <select
             name="year"
@@ -40,7 +40,7 @@ const Formulario = () => {
             onChange={(e) => handleChangeDatos(e)}
             value={datos.year}
           >
-            <option value="">-- Selecione Año --</option>
+            <option value="">-- Select the year --</option>
 
             {YEARS.map((year) => (
               <option key={year} value={year}>
@@ -52,7 +52,7 @@ const Formulario = () => {
 
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
-            Elige un Plan
+            Choose a coverage plan
           </label>
           <div className="flex gap-3 items-center">
             {PLANES.map((plan) => (
@@ -74,7 +74,7 @@ const Formulario = () => {
         <input
           type="submit"
           className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold"
-          value="Cotizar"
+          value="Price quotation"
         />
       </form>
     </>
