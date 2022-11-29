@@ -1,4 +1,10 @@
 import { createContext, useState } from "react";
+import {
+  obtenerDiferenciaYear,
+  calcularMarca,
+  calcularPlan,
+  formatearDinero,
+} from "../helpers";
 
 //Context
 const CotizadorContext = createContext();
@@ -15,6 +21,8 @@ const CotizadorProvider = ({ children }) => {
   });
 
   const [error, setError] = useState("");
+  const [resultado, setResultado] = useState(0);
+  const [cargando, setCargando] = useState(false);
 
   //Poniendo en el state los valores ingresados por el usuario
   const handleChangeDatos = (e) => {
@@ -34,6 +42,37 @@ const CotizadorProvider = ({ children }) => {
       }, 2500);
       return;
     }
+    cotizarSeguro();
+  };
+
+  const cotizarSeguro = () => {
+    //Base del Seguro
+    let resultado = 2000;
+
+    //Obtener diferencias de años
+    const diferencia = obtenerDiferenciaYear(datos.year); //console.log(diferencia);
+
+    //Obtener el 3% por año
+    resultado -= (diferencia * 3 * resultado) / 100; //console.log(resultado);
+
+    //Europeo 30%
+    //Americano 15%
+    //Asiatico 3%
+    resultado *= calcularMarca(datos.marca); //console.log(resultado);
+
+    //Plan Basico 20%
+    //Completo 50%
+    resultado *= calcularPlan(datos.plan); //console.log(resultado);
+
+    //Formatear Dinero
+    resultado = formatearDinero(resultado); //console.log(resultado);
+
+    setCargando(true);
+
+    setTimeout(() => {
+      setResultado(resultado);
+      setCargando(false);
+    }, 3000);
   };
 
   return (
@@ -43,6 +82,9 @@ const CotizadorProvider = ({ children }) => {
         handleChangeDatos,
         handleSubmit,
         error,
+        cotizarSeguro,
+        resultado,
+        cargando,
       }}
     >
       {children}
